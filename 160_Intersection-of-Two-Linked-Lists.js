@@ -83,14 +83,13 @@ Follow up: Could you write a solution that runs in O(m + n) time and use only O(
  */
 const getIntersectionNode = function(headA, headB) {
     if (!headA || !headB) return null;
-    let listA = headA;
-    let listB = headB;
-    // walk through each list till the intersection(listA === listB)  
-    while(listA !== listB) {
-        listA = listA ? listA.next : headA;
-        listB = listB ? listB.next : headB;
+    let a = headA, b = headB;
+    
+    while(a !== b) {
+        a = a ? a.next : headB;
+        b = b ? b.next : headA;
     }
-    return listA;
+    return a;
 };
 
 

@@ -64,6 +64,24 @@ const reverse = function(x) {
 
 
 
+// Version using absolute
+const reverse = function(x) {
+    const LIMIT = 2 ** 31;
+    const sign = x < 0 ? -1 : 1;
+    let n = Math.abs(x);
+    let res = 0;
+
+    while(n > 0) {
+        const digit = n % 10;
+        n = Math.floor(n / 10);
+        res = res * 10 + digit;
+    }
+        if(res >= LIMIT) return 0;
+    return rev * sign;
+}
+
+
+
 /**
  *  Lesson Learned
  *  x = (x / 10) | 0;

@@ -54,8 +54,8 @@ const reverse = function(x) {
         const digit = x % 10;
         x = (x / 10) | 0;
         // check out of bounds
-        if(x / 10 > maxInt || x / 10 === maxInt || x % 10 > maxDigit) return 0;
-        if(x / 10 < minInt || x / 10 === minInt || x % 10 < minDigit) return 0;
+        if(res > maxInt / 10 || (res === maxInt / 10 && digit > maxRange)) return 0;
+        if(res < minInt / 10 || (res === minInt / 10 && digit < minRange)) return 0;
         // append digit to result
         res = res * 10 + digit;
     }

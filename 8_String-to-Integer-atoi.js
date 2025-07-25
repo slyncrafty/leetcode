@@ -139,7 +139,24 @@ var myAtoi = function(s) {
 
 
 /**
+ * @param {string} s
+ * @return {number}
+ */
+var myAtoi = function(s) {
+    // Whitespace, Signedness and Conversion
+    let n = parseInt(s, 10);
+    // Clamping
+    const MAX_INT = 2**31 - 1, 
+          MIN_INT = -(2**31);
+    if(isNaN(n)) return 0;
+    if(n < MIN_INT) return MIN_INT;
+    if(n > MAX_INT) return MAX_INT;
+    return n;
+};
+
+/**
  *  Lesson Learned
+ *  parseInt() can handle skipping whitespace, sign, and conversion. 
  */
 
 

@@ -38,7 +38,7 @@ Constraints:
 var arrangeCoins = function (n) {
 	let left = 1;
 	let right = n;
-	while (left < right) {
+	while (left <= right) {
 		const mid = Math.floor((left + right) / 2);
 		const count = (mid * (mid + 1)) / 2;
 

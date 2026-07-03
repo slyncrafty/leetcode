@@ -63,7 +63,9 @@ var alternatingSubarray = function (nums) {
 			len++;
 			expected *= -1;
 		}
-		res = Math.max(res, len);
+		if (len > 1) {
+			res = Math.max(res, len);
+		}
 	}
 	return res;
 };

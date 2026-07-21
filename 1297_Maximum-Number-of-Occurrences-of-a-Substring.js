@@ -45,20 +45,21 @@ const maxFreq = function (s, maxLetters, minSize, maxSize) {
 	for (let right = 0; right < s.length; right++) {
 		charFreq.set(s[right], (charFreq.get(s[right]) || 0) + 1);
 		if (right - left + 1 > minSize) {
-			charFreq.set(s[left], charFreq.get(s[left] - 1));
+			charFreq.set(s[left], charFreq.get(s[left]) - 1);
 			if (charFreq.get(s[left]) === 0) {
 				charFreq.delete(s[left]);
 			}
 			left++;
 		}
 		if (right - left + 1 === minSize) {
-			if (charFreq.size <= maxSize) {
+			if (charFreq.size <= maxLetters) {
 				const substr = s.substring(left, right + 1);
 				subStrFreq.set(substr, (subStrFreq.get(substr) || 0) + 1);
 				max = Math.max(max, subStrFreq.get(substr));
 			}
 		}
 	}
+
 	return max;
 };
 /**

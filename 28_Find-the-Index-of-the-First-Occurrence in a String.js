@@ -33,7 +33,7 @@ Constraints:
 // Solution
 const strStr = function (haystack, needle) {
 	const n = needle.length;
-	for (let i = 0; i < haystack.length - n; i++) {
+	for (let i = 0; i <= haystack.length - n; i++) {
 		const candidate = haystack.slice(i, i + n);
 		if (candidate === needle) {
 			return i;

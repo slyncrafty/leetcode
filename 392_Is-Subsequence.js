@@ -33,6 +33,7 @@ Follow up: Suppose there are lots of incoming s, say s1, s2, ..., sk where k >= 
 */
 
 // Solution
+/*
 const isSubsequence = function (s, t) {
 	let i = 0;
 	for (const ch of t) {
@@ -41,6 +42,46 @@ const isSubsequence = function (s, t) {
 		}
 	}
 	return i === s.length;
+};
+*/
+
+// Follow up: Suppose there are lots of incoming s
+// For each s, use Binary Search to find the first index of match
+const isSubsequence = function (s, t) {
+	const positionsT = new Map();
+	for (let i = 0; i < t.length; i++) {
+		if (!positionsT.has(t[i])) {
+			positionsT.set(t[i], []);
+		}
+		positionsT.get(t[i]).push(i);
+	}
+
+	let prevIndex = -1;
+
+	for (const ch of s) {
+		if (!positionsT.has(ch)) {
+			return false;
+		}
+
+		const indices = positionsT.get(ch);
+
+		let left = 0;
+		let right = indices.length;
+
+		while (left < right) {
+			const mid = Math.floor((left + right) / 2);
+			if (indices[mid] <= prevIndex) {
+				left = mid + 1;
+			} else {
+				right = mid;
+			}
+		}
+		if (left === indices.length) {
+			return false;
+		}
+		prevIndex = indices[left];
+	}
+	return true;
 };
 
 /**

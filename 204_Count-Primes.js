@@ -44,7 +44,8 @@ const countPrimes = function (n) {
 	isPrime[0] = false;
 	isPrime[1] = false;
 
-	for (let i = 2; i < n; i++) {
+	const sqrtN = Math.sqrt(n); //
+	for (let i = 2; i < sqrtN; i++) {
 		if (isPrime[i]) {
 			for (let j = i * i; j < n; j += i) {
 				isPrime[j] = false;
@@ -72,6 +73,9 @@ const countPrimes = function (n) {
  *  2 * 7 = 14
  *  3 * 7 = 21
  *  4 * 7 = 28 ...
+ *
+ *  a × b = number
+ *  a <= sqrt(number), b <= sqrt(number)
  */
 
 // Test Cases
